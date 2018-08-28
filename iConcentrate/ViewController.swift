@@ -14,21 +14,19 @@ class ViewController: UIViewController
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1) / 2
     }
-    private(set) var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
+    
+    @IBAction func newGameButton(_ sender: UIButton) {
+        game.newGame()
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards )
+        updateViewFromModel()
+        emojiChoices = pickRandomEmojiTheme()
     }
     
-    //outlet is a instance variable
-    @IBOutlet private weak var flipCountLabel: UILabel!
-    //outlet collection is an array of items; cmd + click to rename everywhere
-    @IBOutlet private var cardButtons: [UIButton]!
-    //action is a method. Its a UIButton that sends to the method.
-    
-    
     @IBAction private func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.index(of: sender){
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -50,9 +48,22 @@ class ViewController: UIViewController
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             }
         }
+        flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreLabel.text = "Score: \(game.score)"
     }
-    
-    private var emojiChoices = ["🎃","👻","🍎","🍭","😈","😱","🦇","🙀","🙈"]
+   
+    private func pickRandomEmojiTheme() -> [String] {
+        var themeArray = [[String]]()
+        themeArray.append(["⚽️","🏀","🏈","🎾","🎱","🥊","🥋","🏓"])
+        themeArray.append(["😇","😤","😘","🤪","😉","☺️","😍","😏"])
+        themeArray.append(["🍖","🥩","🍟","🍙","🍔","🍞","🍱","🌭"])
+        themeArray.append(["🚗","🚙","🚑","🚒","🚎","🏎","✈️","🚀"])
+        themeArray.append(["❤️","💚","💜","🖤","💕","💝","❣️","💘"])
+        themeArray.append(["🎃","👻","👹","😈","🕷","🦇","👽","☠️"])
+        return themeArray[themeArray.count.arc4random]
+    }
+    //cannot use instance member within property initializer. Need lazy
+    lazy private var emojiChoices = pickRandomEmojiTheme()
     private var emoji = [Int:String]()
     private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {

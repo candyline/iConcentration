@@ -171,8 +171,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRD-O7-1eA">
+                                <rect key="frame" x="93" y="511" width="190" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="newGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi6-3y-hnh"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD8-iY-mZ2">
-                                <rect key="frame" x="125.66666666666666" y="730" width="123.66666666666666" height="48"/>
+                                <rect key="frame" x="126.33333333333331" y="730" width="123.66666666666669" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-w8-tS1">
+                                <rect key="frame" x="16" y="579" width="343" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -182,7 +199,10 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Sa-ko-9Me" secondAttribute="trailing" constant="16" id="7zL-dY-yFv"/>
                             <constraint firstItem="4Sa-ko-9Me" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FSA-Cg-PtW"/>
+                            <constraint firstItem="Mvq-w8-tS1" firstAttribute="leading" secondItem="4Sa-ko-9Me" secondAttribute="leading" id="SJc-18-0hU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mvq-w8-tS1" secondAttribute="bottom" constant="151" id="TxS-ax-Ps5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XD8-iY-mZ2" secondAttribute="bottom" id="UKi-0q-O4z"/>
+                            <constraint firstItem="Mvq-w8-tS1" firstAttribute="trailing" secondItem="4Sa-ko-9Me" secondAttribute="trailing" id="WNM-fB-VTJ"/>
                             <constraint firstItem="XD8-iY-mZ2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4Sa-ko-9Me" secondAttribute="bottom" constant="8" symbolic="YES" id="eVy-A3-9o7"/>
                             <constraint firstItem="4Sa-ko-9Me" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ik4-S2-hGs"/>
                             <constraint firstItem="XD8-iY-mZ2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xPl-nj-a4r"/>
@@ -191,6 +211,7 @@
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="XD8-iY-mZ2" id="UGB-HU-EYf"/>
+                        <outlet property="scoreLabel" destination="Mvq-w8-tS1" id="VOs-fq-r4G"/>
                         <outletCollection property="cardButtons" destination="MYb-8b-Y9h" collectionClass="NSMutableArray" id="Iae-0r-rRt"/>
                         <outletCollection property="cardButtons" destination="M4v-t1-uzv" collectionClass="NSMutableArray" id="ewc-Bf-AkU"/>
                         <outletCollection property="cardButtons" destination="uYi-GR-4dT" collectionClass="NSMutableArray" id="JkL-uK-X64"/>
@@ -211,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58.399999999999999" y="128.18590704647679"/>
+            <point key="canvasLocation" x="-58.399999999999999" y="127.83251231527095"/>
         </scene>
     </scenes>
 </document>
